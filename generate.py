@@ -1,6 +1,6 @@
 import os
 import subprocess
-from voiceover import generate_voiceover
+from problems.regular.voiceover import generate_voiceover
 
 SCENE_NAME = "IntegrationReel"
 VIDEO_PATH = f"media/videos/scene/1080p60/{SCENE_NAME}.mp4"

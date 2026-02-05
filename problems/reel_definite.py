@@ -19,6 +19,7 @@ class DefiniteIntegralReel(Scene):
         question.move_to(UP*10 + LEFT*3)
         self.add(question)
 
+        
 
         right_stack = StepStack(
             self,

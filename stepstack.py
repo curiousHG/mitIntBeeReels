@@ -7,18 +7,24 @@ class StepStack:
         start_anchor=ORIGIN,
         step_gap=0.65,
         align_edge=LEFT,
-        scale=1.2
-
+        scale=1.2,
+        max_chars=28   # 👈 NEW
     ):
         self.scene = scene
         self.anchor = start_anchor
         self.step_gap = step_gap
         self.align_edge = align_edge
-        self.steps = []
         self.scale = scale
+        self.max_chars = max_chars
+        self.steps = []
 
     def add(self, tex, animate=True):
-        obj = MathTex(tex, color=BLACK).scale(self.scale)
+        # auto-scale for long expressions
+        scale = self.scale
+        if len(tex) > self.max_chars:
+            scale *= 0.75
+
+        obj = MathTex(tex, color=WHITE).scale(scale)
 
         if not self.steps:
             obj.move_to(self.anchor)
@@ -33,4 +39,5 @@ class StepStack:
 
         self.steps.append(obj)
         return obj
+
 
